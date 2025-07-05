@@ -1,0 +1,637 @@
+.video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #000;
+}
+
+/*#region 菜单*/
+.video-menu {
+    width: 0; /*设置为0 隐藏自定义菜单*/
+    height: 150px;
+    overflow: hidden; /*隐藏溢出的元素*/
+    box-shadow: 0 1px 1px #888,1px 0 1px #ccc;
+    position: absolute; /*自定义菜单相对与body元素进行定位*/
+    background: rgb(255, 255, 255);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 5;
+}
+
+.video-menu-new {
+    position: absolute; /*自定义菜单相对与body元素进行定位*/
+    width: 125px;
+    background: rgb(255, 255, 255);
+    visibility: hidden;
+    z-index: 5;
+}
+.active {
+    visibility: visible;
+}
+
+.video-menu-context, .sub-menu-item {
+    width: 115px;
+    height: 25px;
+    white-space: nowrap;
+    line-height: 25px;
+    padding: 0 10px;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.video-menu-context:hover, .sub-menu-item:hover {
+    background-color: #dadce0;
+}
+
+.video-menu-context:hover .sub-menu {
+    opacity: 1;
+}
+
+.sub-menu {
+    position: relative;
+    top:-25px;
+    left:125px;
+    opacity:0;
+    background: #fff;
+}
+
+.icon {
+    position: absolute;
+    right: 0px;
+}
+/*#endregion*/
+
+/*#region video_body*/
+.video-box-body {
+    /*width: 100%;
+    height: 100%;*/
+    float: none;
+    overflow: hidden;
+    position: absolute;
+    border: 2px solid #000000;
+}
+
+.video-select {
+    border: 2px solid #00FF00 !important;
+}
+
+
+.video-div-rotate {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.video-div-rotate.rotate90 {
+    transform: rotate(90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.video-div-rotate.rotate180 {
+    transform: rotate(180deg);
+}
+
+.video-div-rotate.rotate270 {
+    transform: rotate(270deg);
+}
+.video-div-rotate.mirrorinver {
+    transform: rotateY(180deg);
+}
+
+.video-box-body.full {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.video-body {
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #888;
+}
+
+.video-body.hide {
+    display: none;
+}
+
+
+.video-body.back {
+    height: calc(100% - 29px);
+}
+/*#endregion*/
+
+/*#region 控制条*/
+.video-control-real {
+    position: absolute;
+    width: 100%;
+    height: 44px;
+    background: rgba(0, 0, 0, 0);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index:100;
+}
+
+.video-control-real.back {
+    top: calc(100% - 69px);
+}
+
+.video-control-real.disable {
+    background: rgba(111, 111, 111, .75);
+}
+
+.video-control-real.hide {
+    display: none;
+}
+
+.video-control-real-bg {
+    top: 4px;
+    height: calc(100% - 4px);
+    background: rgba(0, 0, 0, .75);
+}
+
+.playbackbarloader {
+    float: left;
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    left: 0;
+    top: 0;
+    z-index:111;
+    background: rgba(255, 255, 255, 0);
+}
+
+.playbackbarbackgroud {
+    float: left;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0px;
+    top: calc((100% - 4px) / 2);
+    background: rgba(150, 150, 150, 1);
+}
+.playbackbarbackgroud.hide {
+    display: none;
+}
+.playbackbarbackgroud.hover {
+    top: calc((100% - 6px) / 2);
+    height: 6px;
+}
+
+.playbackbarplayed {
+    float: left;
+    position: absolute;
+    width: 0px;
+    height: 3px;
+    left: 0;
+    top: calc((100% - 4px) / 2);
+    background: rgba(255, 0, 0, 1.00);
+    pointer-events: none;
+}
+.playbackbarplayed.hide {
+    display: none;
+}
+.playbackbarplayed.hover {
+    top: calc((100% - 6px) / 2);
+    height: 6px;
+}
+
+.playbackbarplaying {
+    float: left;
+    position: absolute;
+    width: 0px;
+    height: 3px;
+    left: 0px;
+    top: calc((100% - 4px) / 2);
+    background: rgba(255, 255, 255, 0.60);
+    pointer-events: none;
+}
+.playbackbarplaying.hide {
+    display: none;
+}
+.playbackbarplaying.hover {
+    top: calc((100% - 6px) / 2);
+    height: 6px;
+}
+
+.playbackbarslide {
+    float: left;
+    position: absolute;
+    background: #fff;
+    width: 12px;
+    height: 12px;
+    /*left: 110px;
+    top: -31px;*/
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.playbackbarslide.hide {
+    display: none;
+}
+
+.control-leftview {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*margin-right: -200px;*/
+    /*position: relative;*/
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.control-btn {
+    float: left;
+    position: absolute;
+    /*line-height: 30px;*/
+    /*background: rgba(256, 256, 256, .5);*/
+    cursor: pointer;
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    top: 7px;
+}
+
+.control-btn.loadbtn {
+    left: 9px;
+}
+
+.control-btn.playpausebtn {
+    left: 39px;
+}
+
+.control-btn.stopbtn {
+    left: 72px;
+}
+
+
+.control-btn.fullscreenbtn {
+    left: calc(100% - 100px);
+}
+
+.control-btn.capturebtn {
+    left: calc(100% - 75px);
+}
+.control-btn.recorderbtn {
+    left: calc(100% - 50px);
+}
+
+.control-btn.stretchbtn {
+    left: calc(100% - 25px);
+}
+
+.control-btn.mutedbtn {
+    left: 103px;
+}
+
+
+.bufferbarbackgroud {
+    float: left;
+    position: absolute;
+    background: rgba(0, 0, 0, .75);
+}
+
+.bufferbarbackgroud.hide {
+    display: none;
+}
+
+.bufferbar {
+    float: left;
+    position: absolute;
+    left: 113px;
+    top: -58px;
+    width: 4px;
+    height: 66px;
+    background: #fff;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
+.bufferbar.hide {
+    display: none;
+}
+
+.currentbar {
+    float: left;
+    position: absolute;
+    left: 113px;
+    top: -25px;
+    width: 4px;
+    height: 33px;
+    background: #19B0FE;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    pointer-events: none;
+}
+.currentbar.hide {
+    display: none;
+}
+
+.drawbar {
+    float: left;
+    position: absolute;
+    background: #fff;
+    width: 12px;
+    height: 12px;
+    /*left: 110px;
+    top: -31px;*/
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.drawbar.hide {
+    display: none;
+}
+
+/*#endregion*/
+    /*#region 等待页面*/
+    .video-waiting-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.video-waiting-page.back {
+    height: 100%;
+}
+
+.video-waiting-page.hide {
+    display: none;
+}
+
+.video-loading-btn {
+    float: left;
+    background: url(./img/VideoPlayer/loading.gif) no-repeat center;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left: calc(100% / 2 - 16px);
+    top: calc(100% / 2 - 32px);
+}
+.video-loading-text {
+    float: left;
+    width: 100%;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    top: calc(100% / 2);
+}
+/*#endregion*/
+
+/*#region osd通道名*/
+.video-osd-text {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 300px;
+    height: 20px;
+    font-family: "宋体";
+    font-size: 15px;
+    color: #FF0000;
+}
+.video-osd-text.hide{
+    display: none;
+}
+
+.video-record-circle {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+.video-record-text {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    height: 15px;
+    font-family: "宋体";
+    font-weight: bold;
+    font-size: 15px;
+    color: #FF0000;
+}
+.video-kbps-text {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 20px;
+    font-family: "宋体";
+    font-size: 15px;
+    color: #00FF00;
+}
+
+/*#endregion*/
+/*#region 按钮图片*/
+/*刷新*/
+.control-btn.loadbtn {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -4px -42px no-repeat;
+}
+
+.control-btn.loadbtn:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -4px -7px no-repeat;
+}
+/*播放暂停*/
+.control-btn.playpausebtn {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -40px -42px no-repeat;
+}
+
+.control-btn.playpausebtn:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -40px -7px no-repeat;
+}
+
+.control-btn.playpausebtn.off {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -76px -42px no-repeat;
+}
+
+.control-btn.playpausebtn.off:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -76px -7px no-repeat;
+}
+/*停止*/
+.control-btn.stopbtn {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -112px -42px no-repeat;
+}
+
+.control-btn.stopbtn:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -112px -7px no-repeat;
+}
+/*声音*/
+.control-btn.mutedbtn {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -184px -42px no-repeat;
+}
+
+.control-btn.mutedbtn:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -184px -7px no-repeat;
+}
+
+.control-btn.mutedbtn.off {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -148px -42px no-repeat;
+}
+
+.control-btn.mutedbtn.off:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -148px -7px no-repeat;
+}
+/*全屏*/
+.control-btn.fullscreenbtn {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -220px -42px no-repeat;
+}
+
+.control-btn.fullscreenbtn:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -220px -7px no-repeat;
+}
+
+.control-btn.fullscreenbtn.off {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -256px -42px no-repeat;
+}
+
+.control-btn.fullscreenbtn.off:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -256px -7px no-repeat;
+}
+/*截图*/
+.control-btn.capturebtn {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -292px -42px no-repeat;
+}
+
+.control-btn.capturebtn:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -292px -7px no-repeat;
+}
+.control-btn.recorderbtn {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -400px -42px no-repeat;
+}
+.control-btn.recorderbtn:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -400px -7px no-repeat;
+}
+.control-btn.recorderbtn.off {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -436px -42px no-repeat;
+}
+.control-btn.recorderbtn.off:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -436px -7px no-repeat;
+}
+/*伸缩*/
+.control-btn.stretchbtn {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -328px -42px no-repeat;
+}
+
+.control-btn.stretchbtn:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -328px -7px no-repeat;
+}
+
+.control-btn.stretchbtn.off {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -364px -42px no-repeat;
+}
+
+.control-btn.stretchbtn.off:hover {
+    background: url(./img/VideoPlayer/videoplayer_button.png) -364px -7px no-repeat;
+}
+/*#endregion*/
+/*#region 录像*/
+.video-time-rule {
+    overflow: hidden;
+    position: absolute;
+    left: 0px;
+    top: calc(100% - 29px);
+    height: 29px;
+    width: 100%;
+    font-size: 12px;
+    max-width: 1440px;
+    background-color: #ccc;
+}
+
+    .video-time-rule.hide {
+        display: none;
+    }
+
+.video-time-day {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 1450px;
+}
+
+.video-time-minute {
+    float: left;
+    width: 1px;
+    height: 10px;
+    margin: 0;
+}
+
+    .video-time-minute.active {
+        background-color: #008d4c;
+    }
+
+.video-time-hour-first {
+    float: left;
+    width: 60px;
+    /*border-left: 1px solid #999;*/
+    border-top: 1px solid #999;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    text-align: center;
+    height: 19px;
+    line-height: 19px;
+    font-size: 8px;
+}
+
+.video-time-hour {
+    float: left;
+    width: 59px;
+    border-left: 1px solid #999;
+    border-top: 1px solid #999;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    text-align: center;
+    height: 19px;
+    line-height: 19px;
+    font-size: 8px;
+}
+
+.video-time-cursor {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    height: 13px;
+    width: 2px;
+    background-color: red;
+    text-align: center;
+}
+
+.video-time-cursor-text {
+    position: absolute;
+    padding: 0 5px;
+    width: 40px;
+    left: -25px;
+    top: 13px;
+    border: 1px solid red;
+    height: 12px;
+    line-height: 15px;
+    cursor: move;
+    background-color: #fff;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+/*#endregion*/
